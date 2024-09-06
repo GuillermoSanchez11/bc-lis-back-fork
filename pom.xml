@@ -12,7 +12,7 @@
 	<artifactId>bclis</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bclis</name>
-	<description>Proyecto que plantea el desarrollo de una base de conocimiento donde se pueda tener de forma centralizada todo tipo de guías y documentos técnicos o coloquiales que surgen en los diferentes procesos académicos y laborales del Laboratorio Integrado de Sistemas (LIS).</description>
+	<description>Proyecto de una base de conocimiento donde se pueda tener de forma centralizada todo tipo de guías y documentos técnicos o coloquiales que surgen en los diferentes procesos académicos y laborales del Laboratorio Integrado de Sistemas (LIS).</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -72,6 +72,21 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
 		</dependency>
 	</dependencies>
 
