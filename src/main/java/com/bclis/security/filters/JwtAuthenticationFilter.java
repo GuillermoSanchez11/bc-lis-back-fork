@@ -70,7 +70,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.getWriter().flush();
 
-
         super.successfulAuthentication(request, response, chain, authResult);
     }
 }
