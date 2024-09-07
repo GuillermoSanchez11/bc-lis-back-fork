@@ -22,11 +22,12 @@ public class TestController {
     @Autowired
     private RoleRepository roleRepository;
 
-    @GetMapping("/hello")
+    @GetMapping("/hello1")
     public ResponseEntity<?> hello(){
-        UserEntity userEntity = userRepository.findByUsername("vale")
-                .orElseThrow(() -> new RuntimeException("Username not found"));
-        return ResponseEntity.ok(userEntity);
+//        UserEntity userEntity = userRepository.findByUsername("vale")
+//                .orElseThrow(() -> new RuntimeException("Username not found"));
+//        return ResponseEntity.ok(userEntity);
+        return ResponseEntity.ok("Hello World");
     }
 
     @GetMapping("/create")
