@@ -1,13 +1,12 @@
 package com.bclis.service;
 
 import com.bclis.dto.request.CreateUserDTO;
-import com.bclis.model.entity.RoleEntity;
-import com.bclis.model.entity.UserEntity;
-import com.bclis.model.enums.EnumRole;
-import com.bclis.repository.RoleRepository;
-import com.bclis.repository.UserRepository;
+import com.bclis.persistence.entity.RoleEntity;
+import com.bclis.persistence.entity.UserEntity;
+import com.bclis.persistence.entity.enums.EnumRole;
+import com.bclis.persistence.repository.RoleRepository;
+import com.bclis.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -34,7 +33,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
 
         Collection<? extends GrantedAuthority> authorities =
-                Collections.singleton(new SimpleGrantedAuthority("ROLE_".concat(userEntity.getRole().getName().name())));
+                Collections.singleton(new SimpleGrantedAuthority("ROLE_".concat(userEntity.getRole().getRoleName().name())));
 
         return new User(userEntity.getUsername(),
                 userEntity.getPassword(),
@@ -50,7 +49,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         RoleEntity roleEntity = roleRepository
-                .findByName(EnumRole.valueOf(createUserDTO.getRole()))
+                .findByRoleName(EnumRole.valueOf(createUserDTO.getRole()))
                 .orElseThrow(() -> new RuntimeException("Role not found"));
 
         UserEntity userEntity = UserEntity.builder()

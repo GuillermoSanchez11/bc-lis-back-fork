@@ -1,6 +1,6 @@
 package com.bclis.security.filters;
 
-import com.bclis.security.jwt.JwtUtils;
+import com.bclis.utils.jwt.JwtUtils;
 import com.bclis.service.UserDetailsServiceImp;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.bclis.security.jwt;
+package com.bclis.utils.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -19,7 +19,6 @@ public class JwtUtils {
 
     @Value("${jwt.secret.key}")
     private String secretKey;
-
 
     @Value("${jwt.time.expiration}")
     private String timeExpiration;
