@@ -20,11 +20,6 @@ public class AuthController {
         return ResponseEntity.ok(userDetailsService.login(loginDTO));
     }
 
-    @GetMapping("/hola")
-    public ResponseEntity<String> hola() {
-        return ResponseEntity.ok("Hola");
-    }
-
     @PostMapping("/register")
     public ResponseEntity<String> createUser(@RequestBody CreateUserDTO createUserDTO) {
         userDetailsService.createUser(createUserDTO);
