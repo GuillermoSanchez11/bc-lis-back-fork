@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-public class UserController {
+public class AuthController {
 
     private final UserDetailsServiceImp userDetailsService;
 
@@ -21,14 +21,13 @@ public class UserController {
     }
 
     @GetMapping("/hola")
-    public String hola(){
-        return "Hola";
+    public ResponseEntity<String> hola() {
+        return ResponseEntity.ok("Hola");
     }
 
-    @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody CreateUserDTO createUserDTO) {
+    @PostMapping("/register")
+    public ResponseEntity<String> createUser(@RequestBody CreateUserDTO createUserDTO) {
         userDetailsService.createUser(createUserDTO);
-
         return ResponseEntity.ok("User created");
     }
 }
