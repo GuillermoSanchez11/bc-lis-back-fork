@@ -1,6 +1,6 @@
-package com.bclis.repository;
+package com.bclis.persistence.repository;
 
-import com.bclis.model.entity.UserEntity;
+import com.bclis.persistence.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

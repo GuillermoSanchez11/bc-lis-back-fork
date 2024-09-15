@@ -1,13 +1,12 @@
 package com.bclis.service;
 
 import com.bclis.dto.request.CreateUserDTO;
-import com.bclis.model.entity.RoleEntity;
-import com.bclis.model.entity.UserEntity;
-import com.bclis.model.enums.EnumRole;
-import com.bclis.repository.RoleRepository;
-import com.bclis.repository.UserRepository;
+import com.bclis.persistence.entity.RoleEntity;
+import com.bclis.persistence.entity.UserEntity;
+import com.bclis.persistence.entity.enums.EnumRole;
+import com.bclis.persistence.repository.RoleRepository;
+import com.bclis.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

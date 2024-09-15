@@ -1,4 +1,4 @@
-package com.bclis.model.entity;
+package com.bclis.persistence.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

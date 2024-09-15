@@ -1,7 +1,7 @@
-package com.bclis.repository;
+package com.bclis.persistence.repository;
 
-import com.bclis.model.entity.RoleEntity;
-import com.bclis.model.enums.EnumRole;
+import com.bclis.persistence.entity.RoleEntity;
+import com.bclis.persistence.entity.enums.EnumRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

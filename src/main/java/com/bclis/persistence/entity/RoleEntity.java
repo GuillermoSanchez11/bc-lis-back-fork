@@ -1,8 +1,7 @@
-package com.bclis.model.entity;
+package com.bclis.persistence.entity;
 
-import com.bclis.model.enums.EnumRole;
+import com.bclis.persistence.entity.enums.EnumRole;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Setter

@@ -1,17 +1,14 @@
 package com.bclis.controller;
 
-import com.bclis.model.entity.RoleEntity;
-import com.bclis.model.entity.UserEntity;
-import com.bclis.model.enums.EnumRole;
-import com.bclis.repository.RoleRepository;
-import com.bclis.repository.UserRepository;
+import com.bclis.persistence.entity.RoleEntity;
+import com.bclis.persistence.entity.UserEntity;
+import com.bclis.persistence.entity.enums.EnumRole;
+import com.bclis.persistence.repository.RoleRepository;
+import com.bclis.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 @RestController
 public class TestController {
