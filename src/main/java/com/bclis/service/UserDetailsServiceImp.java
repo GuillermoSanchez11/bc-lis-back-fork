@@ -33,7 +33,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
 
         Collection<? extends GrantedAuthority> authorities =
-                Collections.singleton(new SimpleGrantedAuthority("ROLE_".concat(userEntity.getRole().getName().name())));
+                Collections.singleton(new SimpleGrantedAuthority("ROLE_".concat(userEntity.getRole().getRoleName().name())));
 
         return new User(userEntity.getUsername(),
                 userEntity.getPassword(),
@@ -49,7 +49,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         RoleEntity roleEntity = roleRepository
-                .findByName(EnumRole.valueOf(createUserDTO.getRole()))
+                .findByRoleName(EnumRole.valueOf(createUserDTO.getRole()))
                 .orElseThrow(() -> new RuntimeException("Role not found"));
 
         UserEntity userEntity = UserEntity.builder()

@@ -31,7 +31,7 @@ public class TestController {
     public String create(){
 
         RoleEntity roleEntity =RoleEntity.builder()
-                .name(EnumRole.valueOf(EnumRole.ADMIN.name()))
+                .roleName(EnumRole.valueOf(EnumRole.ADMIN.name()))
                 .build();
 
         roleRepository.save(roleEntity);
