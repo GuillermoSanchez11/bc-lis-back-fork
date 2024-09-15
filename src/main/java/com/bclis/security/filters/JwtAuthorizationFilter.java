@@ -1,8 +1,6 @@
 package com.bclis.security.filters;
 
 import com.bclis.utils.jwt.JwtUtils;
-import com.bclis.service.UserDetailsServiceImp;
-import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +13,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -27,7 +24,6 @@ import java.util.Collection;
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     private final JwtUtils jwtUtils;
-//    private final UserDetailsServiceImp userDetailsService;
 
     @Override
     protected void doFilterInternal(
@@ -49,7 +45,6 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 Authentication authenticationToken =
                         new UsernamePasswordAuthenticationToken(username, null, authorities);
 
-//                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 SecurityContext context = SecurityContextHolder.createEmptyContext();
                 context.setAuthentication(authenticationToken);
                 SecurityContextHolder.setContext(context);

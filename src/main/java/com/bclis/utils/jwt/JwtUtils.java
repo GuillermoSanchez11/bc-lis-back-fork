@@ -26,15 +26,6 @@ public class JwtUtils {
     @Value("${jwt.time.expiration}")
     private String timeExpiration;
 
-    public String generateAccessToken(String username) {
-        return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(timeExpiration)))
-                .signWith(getSignatureKey(), SignatureAlgorithm.HS256)
-                .compact();
-    }
-
     public String generateAccessToken(Authentication authentication) {
 
         String username = authentication.getPrincipal().toString();
