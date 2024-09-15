@@ -20,6 +20,11 @@ public class UserController {
         return ResponseEntity.ok(userDetailsService.login(loginDTO));
     }
 
+    @GetMapping("/hola")
+    public String hola(){
+        return "Hola";
+    }
+
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody CreateUserDTO createUserDTO) {
         userDetailsService.createUser(createUserDTO);
