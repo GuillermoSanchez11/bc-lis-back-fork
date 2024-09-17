@@ -1,4 +1,4 @@
-package com.bclis.security.jwt;
+package com.bclis.utils.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -7,11 +7,14 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 @Slf4j
@@ -20,15 +23,22 @@ public class JwtUtils {
     @Value("${jwt.secret.key}")
     private String secretKey;
 
-
     @Value("${jwt.time.expiration}")
     private String timeExpiration;
 
-    public String generateAccessToken(String username) {
+    public String generateAccessToken(Authentication authentication) {
+
+        String username = authentication.getPrincipal().toString();
+        String authorities = authentication.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(timeExpiration)))
+                .claim("authorities", authorities)
                 .signWith(getSignatureKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -60,6 +70,11 @@ public class JwtUtils {
                 .getBody();
     }
 
+    public String getClaim(String token, String claimName) {
+        Claims claims = extractAllClaims(token);
+        return claims.get(claimName, String.class);
+    }
+
     public <T> T getClaim(String token, Function<Claims, T> claimsTFunction) {
         Claims claims = extractAllClaims(token);
         return claimsTFunction.apply(claims);
@@ -68,4 +83,5 @@ public class JwtUtils {
     public String getUsernameFromToken(String token) {
         return getClaim(token, Claims::getSubject);
     }
+
 }

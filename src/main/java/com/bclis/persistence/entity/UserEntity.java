@@ -1,8 +1,7 @@
-package com.bclis.model.entity;
+package com.bclis.persistence.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -19,23 +18,20 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(max=30)
+    @Column(unique=true, nullable = false)
     private String username;
 
-    @NotBlank
+    @Column(unique=true, nullable = false)
     private String password;
 
-    @NotBlank
     @Size(max=40)
     private String name;
 
-    @NotBlank
     @Size(max=50)
     private String lastname;
 
     @Email
-    @NotBlank
+    @Column(unique=true, nullable = false)
     private String email;
 
     @ManyToOne
