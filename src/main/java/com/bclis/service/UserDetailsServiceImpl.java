@@ -2,7 +2,7 @@ package com.bclis.service;
 
 import com.bclis.dto.request.CreateUserDTO;
 import com.bclis.dto.request.LoginDTO;
-import com.bclis.dto.response.AuthResponse;
+import com.bclis.dto.response.AuthResponseDTO;
 import com.bclis.persistence.entity.RoleEntity;
 import com.bclis.persistence.entity.UserEntity;
 import com.bclis.persistence.entity.enums.EnumRole;
@@ -27,7 +27,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserDetailsServiceImp implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -55,7 +55,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
                 authorityList);
     }
 
-    public AuthResponse login(LoginDTO loginDTO) {
+    public AuthResponseDTO login(LoginDTO loginDTO) {
         String username = loginDTO.getUsername();
         String password = loginDTO.getPassword();
 
@@ -64,7 +64,17 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
         String accessToken = jwtUtils.generateAccessToken(authentication);
 
-        return new AuthResponse(accessToken, "Authentication successful", username);
+        UserEntity userEntity = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+
+        return AuthResponseDTO.builder()
+                .token(accessToken)
+                .message("Authentication successful")
+                .username(username)
+                .name(userEntity.getName())
+                .lastname(userEntity.getLastname())
+                .role(userEntity.getRole().getRoleName().name())
+                .build();
     }
 
     public Authentication authenticate(String username, String password) {

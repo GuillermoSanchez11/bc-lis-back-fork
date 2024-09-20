@@ -1,7 +1,7 @@
 package com.bclis.security;
 
 import com.bclis.security.filters.JwtAuthorizationFilter;
-import com.bclis.service.UserDetailsServiceImp;
+import com.bclis.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,8 +34,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/login").permitAll();
-                    auth.requestMatchers("/**").permitAll();
-//                    auth.requestMatchers("/auth/register").hasRole("ADMIN");
+//                    auth.requestMatchers("/**").permitAll();
+                    auth.requestMatchers("/auth/register").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -54,7 +54,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(UserDetailsServiceImp userDetailService) {
+    public AuthenticationProvider authenticationProvider(UserDetailsServiceImpl userDetailService) {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
         provider.setUserDetailsService(userDetailService);

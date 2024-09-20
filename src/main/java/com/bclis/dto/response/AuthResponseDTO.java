@@ -7,8 +7,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthResponse {
+public class AuthResponseDTO {
     private String token;
     private String message;
     private String username;
+    private String name;
+    private String lastname;
+    private String role;
 }
