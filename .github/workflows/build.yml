@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - feature/document-service
+      - feature/*
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
