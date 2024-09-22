@@ -1,7 +1,7 @@
 package com.bclis.service;
 
-import com.bclis.dto.DocumentCreateDTO;
-import com.bclis.dto.DocumentResponseDTO;
+import com.bclis.dto.request.DocumentCreateDTO;
+import com.bclis.dto.response.DocumentResponseDTO;
 import com.bclis.persistence.entity.DocumentEntity;
 import com.bclis.persistence.repository.DocumentRepository;
 import org.modelmapper.ModelMapper;

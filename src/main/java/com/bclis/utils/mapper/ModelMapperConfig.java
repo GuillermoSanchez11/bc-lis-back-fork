@@ -1,4 +1,4 @@
-package com.bclis.utils.jwt;
+package com.bclis.utils.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

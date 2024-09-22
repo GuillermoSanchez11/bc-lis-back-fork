@@ -1,7 +1,7 @@
 package com.bclis.controller;
 
-import com.bclis.dto.DocumentCreateDTO;
-import com.bclis.dto.DocumentResponseDTO;
+import com.bclis.dto.request.DocumentCreateDTO;
+import com.bclis.dto.response.DocumentResponseDTO;
 import com.bclis.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

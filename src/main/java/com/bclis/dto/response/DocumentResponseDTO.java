@@ -1,4 +1,4 @@
-package com.bclis.dto;
+package com.bclis.dto.response;
 
 import com.bclis.persistence.entity.DocumentEntity.DocumentState;
 import lombok.AllArgsConstructor;
