@@ -128,6 +128,7 @@
                         <filtering>true</filtering>
                         <excludes>
                             <exclude>application-test.properties</exclude>
+                            <exclude>application-prod.properties</exclude>
                         </excludes>
                     </resource>
                 </resources>
@@ -150,6 +151,30 @@
                         <filtering>true</filtering>
                         <excludes>
                             <exclude>application-dev.properties</exclude>
+                            <exclude>application-prod.properties</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <build.profile.id>prod</build.profile.id>
+                <profileActive>prod</profileActive>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <excludes>
+                            <exclude>application-dev.properties</exclude>
+                            <exclude>application-test.properties</exclude>
                         </excludes>
                     </resource>
                 </resources>
